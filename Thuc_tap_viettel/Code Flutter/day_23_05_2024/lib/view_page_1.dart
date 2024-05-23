@@ -24,7 +24,6 @@ class _ViewPage1State extends State<ViewPage1> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     nameController = TextEditingController();
@@ -35,7 +34,6 @@ class _ViewPage1State extends State<ViewPage1> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     nameController!.dispose();
     priceController!.dispose();
