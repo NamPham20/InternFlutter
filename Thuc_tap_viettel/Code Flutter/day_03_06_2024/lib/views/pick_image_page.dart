@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PickImagePage extends ConsumerWidget{
   const PickImagePage({super.key});
-
+  PickImagePage
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var imageFile = ref.watch(imagePickerProvider);

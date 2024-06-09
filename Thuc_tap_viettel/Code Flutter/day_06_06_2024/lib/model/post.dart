@@ -1,5 +1,5 @@
 class Post {
-  String? id;
+  int id;
   String nameUser;
   String title;
   String pathImage;
@@ -7,11 +7,23 @@ class Post {
   String? createTime;
 
   Post({
-        this.id,
+        this.id=0,
         required this.nameUser,
         required this.title,
         required this.pathImage,
         required this.scope,
         this.createTime
       });
+
+  factory Post.fromMap(Map<String, dynamic> map){
+    return Post(
+      id: map['id'],
+      nameUser: map['nameUser'],
+      title: map['title'],
+      pathImage: map['pathImage'],
+      scope: map['scope'],
+      createTime: map['createTime']
+    );
+  }
+
 }
