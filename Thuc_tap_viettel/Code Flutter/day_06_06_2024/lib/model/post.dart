@@ -18,11 +18,11 @@ class Post {
   factory Post.fromMap(Map<String, dynamic> map){
     return Post(
       id: map['id'],
-      nameUser: map['nameUser'],
+      nameUser: map['name_user'],
       title: map['title'],
-      pathImage: map['pathImage'],
+      pathImage: map['path_image'],
       scope: map['scope'],
-      createTime: map['createTime']
+      createTime: map['create_time']
     );
   }
 

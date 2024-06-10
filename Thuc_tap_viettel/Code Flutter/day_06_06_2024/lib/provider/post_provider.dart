@@ -37,7 +37,6 @@ class PostProvider extends StateNotifier<List<Post>>{
       todoList.add(Post.fromMap(element));
     }
     state = todoList;
-    database.close();
     return Future.value();
   }
 

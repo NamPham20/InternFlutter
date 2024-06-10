@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:day_06_06_2024/provider/post_provider.dart';
+import 'package:day_06_06_2024/views/home_page.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import '../model/post.dart';
 import '../provider/pick_image_provider.dart';
@@ -184,12 +187,9 @@ class NewPostState extends ConsumerState<NewPost>{
                   int randomIndex = random.nextInt(userList.length);
                   String randomUser = userList[randomIndex];
                   String status = isPublic ? "public": "private";
-                  if(imageFile ==   null){
-
-                  }
-                  Post post = Post(nameUser: randomUser, title: controller!.text, pathImage: imageFile.toString(), scope: status);
+                  Post post = Post(nameUser: randomUser, title: controller!.text, pathImage: imageFile.path, scope: status);
                   await ref.read(postProvider.notifier).createPost(post);
-                  Navigator.of(context).pop();
+                  Navigator.pop(context);
                   },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.redAccent
@@ -200,5 +200,11 @@ class NewPostState extends ConsumerState<NewPost>{
       ),
     );
   }
+
+  Future<String> xFileToString(XFile file) async {
+    List<int> bytes = await file.readAsBytes();
+    return base64Encode(bytes);
+  }
+
 
 }
